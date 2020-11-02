@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" >
+    <title> GamersTeam - Profile Settings </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/estilos.css">
+
+    <script src="https://kit.fontawesome.com/4a35a85f5c.js" crossorigin="anonymous"></script>
+
+    <!-- Add Game Modal-->
+    <div class="modal fade" id="addModal01" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="text-align: center; align-content: center;">
+              Insira o nome do jogo: <br><br>
+              <input id="modalInput01" class="form-control form-control-sm modalInput" type="text" placeholder="Ex: 'League of Legends'"
+                                    aria-label="Search">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn" data-dismiss="modal">Cancelar</button>
+              <button id="addButton01" type="button" class="btn" data-dismiss="modal">Adicionar</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Add Series and Movies Modal-->
+    <div class="modal fade" id="addModal02" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: center; align-content: center;">
+                    Insira o nome da Série ou filme: <br><br>
+                    <input id="modalInput02" class="form-control form-control-sm modalInput" type="text" placeholder="Ex: 'Vingadores - Ultimato'"
+                                        aria-label="Search">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-dismiss="modal">Cancelar</button>
+                    <button id="addButton02" type="button" class="btn" data-dismiss="modal">Adicionar</button>
+                </div>  
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Add animes Modal-->
+    <div class="modal fade" id="addModal03" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: center; align-content: center;">
+                    Insira o nome do Anime: <br><br>
+                    <input id="modalInput03" class="form-control form-control-sm modalInput" type="text" placeholder="Ex: 'Dragon Ball'"
+                                        aria-label="Search">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-dismiss="modal">Cancelar</button>
+                    <button id="addButton03" type="button" class="btn" data-dismiss="modal">Adicionar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add music and band Modal-->
+    <div class="modal fade" id="addModal04" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: center; align-content: center;">
+                    Insira o nome da musica ou banda: <br><br>
+                    <input id="modalInput04" class="form-control form-control-sm modalInput" type="text" placeholder="Ex: 'Linkin Park'"
+                                        aria-label="Search">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-dismiss="modal">Cancelar</button>
+                    <button id="addButton04" type="button" class="btn" data-dismiss="modal">Adicionar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Info Modal-->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle"> Mais detalhes </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="text-align: center; align-content: center;">
+              O mecanismo de busca de duos poderá usar os dados a seguir para
+              encontrar pessoas que sejam mais semelhantes a você. <br><br>
+
+            </div>
+            
+          </div>
+        </div>
+    </div>
+
+</head>
+
+
+<body>
+
+
+    <header id="headerId" class="header">
+        
+        <div class="container-fluid">
+        <!-- Create the top menu -->
+            <div class="row w-100">
+                
+                <div class="col-12 header2">
+
+                    
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 menuArea">
+
+                        <div class="topNav">
+
+                            
+                            <a id="navLink01" class="nav-link active" href="#"> 
+                                <i class="fas fa-chevron-left"></i>
+                                Voltar
+                            </a>
+                            
+                            <div class="rightNav">
+                                <div class="dropdown">
+                                    
+                                    <a id="navLink02" data-toggle="dropdown" class="dropdown-toggle nav-link active" aria-haspopup="true" aria-expanded="false" href="#"> 
+                                        <i class="fas fa-cog"></i>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                      <a class="dropdown-item" href="#">Configurações</a>
+                                      <a class="dropdown-item" href="#">Perfil</a>
+                                      <a class="dropdown-item" href="#">Sair</a>
+                                    </div>
+                                  </div>
+                                  
+                                
+                            </div>
+
+                        </nav>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+
+    </header>
+
+    <main class="container-fluid main">
+
+        <div class="row">
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 profileImage">
+
+                    <img src="Assets/profileImage.png" id="imag01" alt="Avatar" class="rounded-circle">
+
+                    <fieldset><legend></legend>
+                        <div id="imgstore"> </div>
+                    </fieldset> 
+
+                    <br>
+
+                    <label id="loadImageLabel" for="getimage"> Carregar Imagem </label>
+                    <input type="file" id="getimage">
+                    
+                    
+
+            </div>
+            <div id="profileSettingsId" class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 profileSettings">
+
+                <p id="title1" class="text-left"> Dados Pessoais </p>
+
+                <form id="personalSettingsForm">
+
+                        <p class="p1">Nome de Usuário: </p> 
+                        <input id="nameId" class="form-control form-control-sm largeInput" type="text" 
+                            placeholder="Nome de Usuário" aria-label="Search">
+
+                        <br>
+
+                        <p class="p1">Nome Completo: </p>                    
+                        <input id="completeNameId" class="form-control form-control-sm largeInput" type="text" 
+                                    placeholder="Nome Completo" aria-label="Search">
+
+                        <br>
+                        
+                        <p class="p1">Telefone: </p>
+                        <input id="phoneId" class="form-control form-control-sm largeInput" type="text"
+                                    placeholder="Telefone" aria-label="Search">
+
+                        <br>
+
+                        <p class="p1">Data de Nascimento: </p>
+                        <input id="birthDateDayId" class="form-control form-control-sm smallInput" type="text" 
+                                    placeholder="Dia" aria-label="Search" style="width: 10%">
+                        
+                        <p class="separator">/</p>
+
+                        <input id="birthDateMonthId" class="form-control form-control-sm smallInput2" type="text"
+                                    placeholder="Mês" aria-label="Search" style="width: 10%">
+
+                        <p class="separator">/</p>
+
+                        <input id="birthDateYearId" class="form-control form-control-sm smallInput2" type="text" 
+                                    placeholder="Ano" aria-label="Search" style="width: 10%">
+
+                        <button id="bt02" type="button" class="btn"> Salvar Alterações</button>
+                </form>
+
+
+
+                
+            </div>
+
+
+
+            <div class="personalSettings03">
+                <p id="title2" class="text-left"> Preferências e Gostos </p>
+                <a data-toggle="modal" data-target="#infoModal" > 
+                    <i class="far fa-question-circle"></i>
+                </a>
+            </div>
+
+            <br><br><br>
+
+            <div class="col-12 personalSettings01">
+                <p id="title3" class="text-left"> Jogos favoritos: </p>
+
+                <button class="bt3 btn" id="bt03" type="button"
+                data-toggle="modal" data-target="#addModal01"> &#10010 Adicionar</button>
+                <br>
+                <div id="gamesStore">  
+                    
+                </div>
+
+            </div>
+
+            <div class="col-12 personalSettings01">
+                <p id="title3" class="text-left"> Séries e Filmes favoritos: </p>
+
+                <button class="bt3 btn btn-secondary" id="bt04" type="button"
+                data-toggle="modal" data-target="#addModal02"> &#10010 Adicionar</button>
+                <br>
+                <div id="filmsStore">  
+                    
+                </div>
+            </div>
+
+            <div class="col-12 personalSettings01">
+                <p id="title3" class="text-left"> Animes favoritos: </p>
+
+                <button class="bt3 btn btn-secondary" id="bt05" type="button"
+                data-toggle="modal" data-target="#addModal03"> &#10010 Adicionar</button>
+                <br>
+                <div id="animesStore">  
+                    
+                </div>
+
+            </div>
+
+            <div class="col-12 personalSettings01">
+                <p id="title3" class="text-left"> Músicas e Bandas favoritas: </p>
+
+                <button class="bt3 btn btn-secondary" id="bt06" type="button"
+                data-toggle="modal" data-target="#addModal04"> &#10010 Adicionar</button>
+                <br>
+                <div id="musicsStore">  
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </main>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="scripts/javascript.js"> </script>
+        
+    <footer id="footerId">
+
+        <div class="container footer">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+                    <p> Copyright 2020 - GamersTeam - Disciplina de Desenvolvimento de Interfaces Web - Todos os direitos reservados</p>
+                    
+                </div>
+
+            </div>
+        </div>
+
+
+    </footer>
+
+
+
+ 
+
+      
+</body>
+
+
+
+
+
+
+</html>

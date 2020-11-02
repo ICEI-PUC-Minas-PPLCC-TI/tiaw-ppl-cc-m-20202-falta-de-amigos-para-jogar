@@ -2,7 +2,7 @@
 var buttonColor = "#36393b";
 var buttonTextColor = "#fff";
 var decorativeColor = "#04d6f1"
-var color01 = "#23292";
+var color01 = "#23292F";
 var color02 = "#2C2F33";
 var color03 = "#40444b";
 var color04 = "#2d3135";
@@ -20,6 +20,7 @@ window.onload = () => {
     }
 
     document.getElementById("footerId").style.borderColor = decorativeColor;
+    document.getElementById("footerId").style.backgroundColor = color01;
 
     document.body.style.backgroundColor = color02;
 

@@ -38,9 +38,19 @@
                             </a>
 
                             <div class="rightNav">
-                                <a id="navLink02" class="nav-link active" href="#"> 
-                                    <i class="fas fa-cog"></i>
-                                </a>
+                                <div class="dropdown">
+                                    
+                                    <a id="navLink02" data-toggle="dropdown" class="dropdown-toggle nav-link active" aria-haspopup="true" aria-expanded="false" href="#"> 
+                                        <i class="fas fa-cog"></i>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                      <a class="dropdown-item" href="#">Configurações</a>
+                                      <a class="dropdown-item" href="ProfileSettings.html">Perfil</a>
+                                      <a class="dropdown-item" href="#">Sair</a>
+                                    </div>
+                                  </div>
+                                  
+                                
                             </div>
 
                         </nav>
@@ -58,56 +68,41 @@
         <div class="row">
 
             
-            <div id="settingsId" class="col-12 settings">
+            <div class="col-12 settings"></div>
 
                 <p id="title1" class="text-left"> Interface </p>
 
                 <form>
 
-                        <p class="p1">Nome de Usuário: </p> 
-                        <input class="form-control form-control-sm largeInput" type="text" placeholder="Nome de Usuário"
-                                aria-label="Search">
-
-                        <br>
-
-                        <p class="p1">Nome Completo: </p>                    
-                        <input class="form-control form-control-sm largeInput" type="text" placeholder="Nome Completo"
-                                    aria-label="Search">
-
-                        <br>
-
-                        <p class="p1">E-mail: </p> 
-                        <input class="form-control form-control-sm largeInput" type="text" placeholder="E-mail"
-                                    aria-label="Search">
-
-                        <br>
-
-                        <p class="p1">Telefone: </p>
-                        <input class="form-control form-control-sm largeInput" type="text" placeholder="Telefone"
-                                    aria-label="Search">
-
-                        <br>
-
-                        <p class="p1">Data de Nascimento: </p>
-                        <input class="form-control form-control-sm smallInput" type="text" placeholder="Dia"
-                                    aria-label="Search" style="width: 10%">
+                    <p class="p11"> Tema: </p>
+                    <div class="input-group mb-3">
                         
-                        <p class="separator">/</p>
-
-                        <input class="form-control form-control-sm smallInput2" type="text" placeholder="Mês"
-                                    aria-label="Search" style="width: 10%">
-
-                        <p class="separator">/</p>
-
-                        <input class="form-control form-control-sm smallInput2" type="text" placeholder="Ano"
-                                    aria-label="Search" style="width: 10%">
+                        <select class="custom-select smallInput" id="inputGroupSelect01">
+                          <option selected value="1">Escuro</option>
+                          <option value="2">Claro</option>
+                        </select>
+                      </div>
 
 
                 </form>
 
+                <p id="title1" class="text-left"> Segurança e Privacidade </p>
+            </div>
+
+            <div id="settingsId" class="col-12 settings">
+
+                <form class="recEmail">
+
+                
+                    <p class="p1">E-mail de recuperação: </p>
+                    <input id="recEmailId" class="form-control form-control-sm largeInput" type="text" placeholder="E-mail"
+                                aria-label="Search">
 
 
-                <button id="bt02" type="button" class="btn btn-secondary"> Salvar Alterações</button>
+                </form>
+
+                <button id="bt02" type="button" class="btn btn-secondary"
+                style="margin-bottom: 5%;"> Salvar Alterações</button>
             </div>
 
 
@@ -122,7 +117,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-    <script src="javascript.js"> </script>
+    <script src="scripts/javascriptConfigurations.js"> </script>
         
     <footer id="footerId">
 

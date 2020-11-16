@@ -48,32 +48,73 @@ window.onload = () => {
     //-----------------------------------------------------------------------------
 
 
+    var localData = 
+    {
+        users: []
+    };
+
+
+    let dataJSON = localStorage.getItem("localData");
+    if(dataJSON)
+    {
+
+        localData = JSON.parse(dataJSON);
+    }
+    else{
+        
+        localStorage.setItem("localData", JSON.stringify(localData));
+    }
+
+
+    //get the current user
+    var currentUserId = -1;
+    let currentUserJSON = localStorage.getItem("currentUser");
+    if(currentUserJSON)
+    {
+        for(let i = 0; i < localData.users.length; ++i)
+        {
+            if(localData.users[i].userName == JSON.parse(currentUserJSON).userName)
+            {
+                currentUserId = i;
+                break;
+            }
+            else if(i == localData.users.length - 1) alert("No user is currently logged");
+        }
+    }
+
+
+
+
+    //-----------------------------------------------------------------
     
 
     document.getElementById("bt02").onclick = () => {
 
-        let user02 = { 'userName': document.getElementById('nameId').value,
-                 'completeName': document.getElementById('completeNameId').value, 
-                 'phone': document.getElementById('phoneId').value,
-                 'birthDay': document.getElementById('birthDateDayId').value,
-                 'birthMonth': document.getElementById('birthDateMonthId').value,
-                 'birthYear': document.getElementById('birthDateYearId').value};
+        if(currentUserId != -1)
+        {
+            localData.users[currentUserId].userName = document.getElementById('nameId').value;
+            localData.users[currentUserId].completeName = document.getElementById('completeNameId').value
+            localData.users[currentUserId].phone = document.getElementById('phoneId').value;
+            localData.users[currentUserId].birthDay = document.getElementById('birthDateDayId').value;
+            localData.users[currentUserId].birthMonth = document.getElementById('birthDateMonthId').value
+            localData.users[currentUserId].birthYear = document.getElementById('birthDateYearId').value;
 
-        localStorage.setItem("user001", JSON.stringify(user02) );
+            localStorage.setItem("localData", JSON.stringify(localData) );
+        }
     }
 
-    var user01 = localStorage.getItem("user001");
-    if(user01 != null)
+    if(currentUserId != -1)
     {
-        let parsedUser = JSON.parse(user01);
-        document.getElementById("nameId").value = parsedUser.userName;
-        document.getElementById("completeNameId").value = parsedUser.completeName;
-        document.getElementById("phoneId").value = parsedUser.phone;
-        document.getElementById("birthDateDayId").value = parsedUser.birthDay;
-        document.getElementById("birthDateMonthId").value = parsedUser.birthMonth;
-        document.getElementById("birthDateYearId").value = parsedUser.birthYear;
-    }
-
+        
+        document.getElementById("nameId").value = localData.users[currentUserId].userName;
+        document.getElementById("completeNameId").value = localData.users[currentUserId].completeName;
+        document.getElementById("phoneId").value = localData.users[currentUserId].phone;
+        document.getElementById("birthDateDayId").value = localData.users[currentUserId].birthDay;
+        document.getElementById("birthDateMonthId").value = localData.users[currentUserId].birthMonth;
+        document.getElementById("birthDateYearId").value = localData.users[currentUserId].birthYear;
+        if(localData.users[currentUserId].profileImg != "")
+            document.getElementById("imag01").src = localData.users[currentUserId].profileImg;
+    };
 
     
     //======================================
@@ -86,8 +127,13 @@ window.onload = () => {
         var fr = new FileReader();
         fr.onload = () => { 
             document.getElementById("imag01").src = fr.result;
-            try {
-                localStorage.setItem("profileImg", fr.result);
+            try {                
+
+                if(currentUserId != -1)
+                {
+                    localData.users[currentUserId].profileImg = fr.result;
+                    localStorage.setItem("localData",  JSON.stringify(localData));
+                }
             }
             catch (e) {
                 console.log("Storage failed: " + e);
@@ -106,46 +152,43 @@ window.onload = () => {
     
    function loadFavourites(storeName, lsKey) 
    {
+        if(currentUserId != -1)
+        {
+            let arr = localData.users[currentUserId][lsKey];
 
-       favoritesArr = localStorage.getItem(lsKey);
-       if(favoritesArr != null)
-       {
-           let arr = JSON.parse(localStorage.getItem(lsKey));
-
-           let store = document.getElementById(storeName);
-           for(let i = 0; i < arr.length; ++i)
-           {
-               store.innerHTML += 
-                   '<span class="badge badge-default"> '
+            let store = document.getElementById(storeName);
+            for(let i = 0; i < arr.length; ++i)
+            {
+                store.innerHTML += 
+                    '<span class="badge badge-default"> '
                     + arr[i] + 
-                   '<i tabindex="' + i + '" class="delete far fa-times-circle"></i></span>';
-           }
+                    '<i tabindex="' + i + '" class="delete far fa-times-circle"></i></span>';
+            }
 
-           //set the onclick function for every badge's delete button
-           let arr02 = document.querySelectorAll('#' + storeName +' .delete');
+            //set the onclick function for every badge's delete button
+            let arr02 = document.querySelectorAll('#' + storeName +' .delete');
            
-           for(let i = 0; i < arr02.length; ++i)
-           {
+            for(let i = 0; i < arr02.length; ++i)
+            {
             
-               arr02[i].onclick = (eventObj ) => { deleteFavourite(eventObj, storeName, lsKey ); }
-           }
+                arr02[i].onclick = (eventObj ) => { deleteFavourite(eventObj, storeName, lsKey ); }
+            }
 
-       }
-       else{
-           localStorage.setItem(lsKey, JSON.stringify([]));
-       }
-   }
+        }
+    }
 
 
-   function addFavourite(storeName, lsKey, modalInput)
-   {
-       let store = document.getElementById(storeName);
+    function addFavourite(storeName, lsKey, modalInput)
+    {
+        if(currentUserId == -1)
+            return;
 
-       if(document.getElementById(modalInput).value != '')
-       {
+        let store = document.getElementById(storeName);
 
-            let favoritesArr = localStorage.getItem(lsKey);
-            let arr = JSON.parse(favoritesArr);
+        if(document.getElementById(modalInput).value != '')
+        {
+
+            let arr = localData.users[currentUserId][lsKey];
 
             //see if the value already is in the array
             function check(val) {
@@ -157,7 +200,9 @@ window.onload = () => {
 
             arr.push(document.getElementById(modalInput).value);
            
-            localStorage.setItem(lsKey, JSON.stringify(arr));
+            localData.users[currentUserId][lsKey] = arr;
+
+            localStorage.setItem("localData", JSON.stringify(localData));
 
             store.innerHTML = ''; //clear all elements 
             loadFavourites(storeName, lsKey); //and load them again
@@ -166,12 +211,9 @@ window.onload = () => {
 
    function deleteFavourite(eventObj, storeName, lsKey)
    {
-        let favoriteGamesArr = localStorage.getItem(lsKey);
+        localData.users[currentUserId][lsKey].splice(eventObj.target.tabIndex, 1);
 
-        let arr = JSON.parse(favoriteGamesArr);
-
-        arr.splice(eventObj.target.tabIndex, 1);
-        localStorage.setItem(lsKey, JSON.stringify(arr));
+        localStorage.setItem("localData", JSON.stringify(localData));
 
     
         document.getElementById(storeName).innerHTML = ""; //clear all elements 
@@ -201,18 +243,23 @@ window.onload = () => {
         addFavourite("animesStore", "favouriteAnimes", "modalInput03" ); } 
 
     document.getElementById("addButton04").onclick = () => { 
-        addFavourite("musicsStore", "favouriteMusics", "modalInput04" ); } 
+        addFavourite("musicsStore", "favouriteMusics", "modalInput04" ); } ;
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+        //let profileImg01 = localStorage.getItem("profileImg");
+        if(currentUserId != -1)
+        {
+            document.getElementById("imag01").src = localData.users[currentUserId].profileImg;
+        }
+    
+    });
                         
 };
 
 
-document.addEventListener("DOMContentLoaded", () => {
 
-    let profileImg01 = localStorage.getItem("profileImg");
-    if(profileImg01 != null)
-    {
-        document.getElementById("imag01").src = profileImg01;
-    }
 
-});
+
 

@@ -13,12 +13,51 @@ var color05 = "#2a2e31";
 
 window.onload = () => {
 
-    var user01 = localStorage.getItem("user002");
-    if(user01 != null)
+
+    var localData = 
     {
-        let parsedUser = JSON.parse(user01);
-        document.getElementById("inputGroupSelect01").value = parsedUser.darkTheme;
-        document.getElementById("recEmailId").value = parsedUser.recEmail;
+        users: []
+    };
+
+
+    let dataJSON = localStorage.getItem("localData");
+    if(dataJSON)
+    {
+
+        localData = JSON.parse(dataJSON);
+    }
+    else{
+        
+        localStorage.setItem("localData", JSON.stringify(localData));
+    }
+
+
+    //get the current user
+    var currentUserId = -1;
+    let currentUserJSON = localStorage.getItem("currentUser");
+    if(currentUserJSON)
+    {
+        for(let i = 0; i < localData.users.length; ++i)
+        {
+            if(localData.users[i].userName == JSON.parse(currentUserJSON).userName)
+            {
+                currentUserId = i;
+                break;
+            }
+            else if(i == localData.users.length - 1) alert("No user is currently logged");
+        }
+    }
+
+
+
+
+
+    //==================================================
+
+    if(currentUserId != -1)
+    {
+        document.getElementById("inputGroupSelect01").value = localData.users[currentUserId].darkTheme;
+        document.getElementById("recEmailId").value = localData.users[currentUserId].recEmail;
     }
 
 
@@ -64,12 +103,14 @@ window.onload = () => {
 
     document.getElementById("bt02").onclick = () => {
 
-        let user02 = { 'darkTheme': document.getElementById('inputGroupSelect01').value,
-                 'recEmail': document.getElementById('recEmailId').value};
+        if(currentUserId != -1)
+        {
+            localData.users[currentUserId].darkTheme = document.getElementById('inputGroupSelect01').value;
+            localData.users[currentUserId].recEmail = document.getElementById('recEmailId').value;
+            localStorage.setItem("localData", JSON.stringify(localData));
 
-        localStorage.setItem("user002", JSON.stringify(user02) );
-
-        location.reload();
+            location.reload();
+        }
     }
 
    

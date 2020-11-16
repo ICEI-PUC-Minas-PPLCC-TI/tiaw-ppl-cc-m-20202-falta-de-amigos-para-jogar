@@ -47,4 +47,80 @@ window.onload = () => {
     button02.style.backgroundColor = color03;
     
     button01.addEventListener("click", () => { window.location.href = "LoginPage.html";}); 
+
+    //==========================================================
+
+    let localData = 
+    {
+        users: []
+    };
+
+
+    let dataJSON = localStorage.getItem("localData");
+    if(dataJSON)
+    {
+        localData = JSON.parse(dataJSON);
+    }
+    else{
+        localStorage.setItem("localData", JSON.stringify(localData));
+    }
+
+
+    //-----------------------------------------------------------------
+
+    let usernameObj = document.getElementById("userNameInput");
+    let emailObj = document.getElementById("emailInput");
+    let passwordObj = document.getElementById("passwordInput");
+    let birthDayObj = document.getElementById("birthDateDayId");
+    let birthMonthObj = document.getElementById("birthDateMonthId");
+    let birthYearObj = document.getElementById("birthDateYearId");
+
+    //function to be executed when the user press the Login button
+    document.getElementById("bt02").onclick = () => {
+        if(usernameObj.value.length == 0 || 
+            emailObj.value.length == 0 ||
+            passwordObj.value.length == 0 ||
+            birthDayObj.value.length == 0 ||
+            birthMonthObj.value.length == 0 ||
+            birthYearObj.value.length == 0) 
+        {
+            alert("Preencha todos os campos");
+            return;
+        }
+        
+        for(let i = 0; i < localData.users.length; ++i)
+        {
+            if(localData.users[i].userName == usernameObj.value)
+            {
+                alert("This username is already in use.");
+                return;
+            }
+        }
+
+        let currentUser = {
+            'userName': usernameObj.value,
+            'completeName': "", 
+            'phone': "",
+            'email': emailObj.value,
+            'birthDay': birthDayObj.value,
+            'birthMonth': birthMonthObj.value,
+            'birthYear': birthYearObj.value,
+            'password': passwordObj.value,
+            'recEmail': "",
+            'darkTheme': 1,
+            'favouriteGames': [],
+            'favouriteFilms': [],
+            'favouriteAnimes': [],
+            'favouriteMusics': [],
+            'profileImg': ""
+        }
+
+        localData.users.push(currentUser);
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        localStorage.setItem("localData", JSON.stringify(localData));
+        window.location.href = "ProfileSettings.html";
+        return;
+
+    }
+
 }

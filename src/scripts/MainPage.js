@@ -11,6 +11,7 @@ var color03 = "#40444b";
 var color04 = "#2d3135";
 var color05 = "#2a2e31";
 
+const API_KEY = '362594389988e7bb803fc7d8c227e651';
 
 var currentUser;
 
@@ -120,34 +121,80 @@ window.onload = () => {
     //================================================================
     //load news from the newsApi
 
+
+
+
+
+    function loadNews()
+    {
+       
+        let newsStore = document.getElementById("carouselId");
+        newsStore.innerHTML = "";
+        let newsStoreStr = "";
+
+        let data = JSON.parse(this.responseText);
+
+        
+        for(let i = 0; i < data.articles.length && i < 9; ++i)
+        {
+            let article = data.articles[i];
+
+
+            let date = new Date(article.publishedAt);
+
+            newsStoreStr += ((i % 3 == 0) ? ('<div class="carousel-item col-12 ' +
+                                ((i == 0) ? 'active">\n' : '">\n'))
+                                                    : '') +
+            '<div class="card newsCard col-4">' +
+                `<img class="card-img-top" src="${article.image}" alt="Card image cap">` +
+                '<div class="card-body">' +
+                    `<h5 class="card-title">${article.title}</h5>` +
+                    `<p class="card-text"> ${article.content} </p>` +
+                    `<p> ${date.toLocaleDateString()} - ${article.source.name}</p>` + 
+                    `<a href="${article.url}" target="_blank">Mais detalhers</a>` +
+                '</div>' +
+            '</div>' + ((i > 0 && (i + 1) % 3 == 0) ? '</div>\n' : '');
+            
+            
+        }
+        newsStore.innerHTML = newsStoreStr;
+        
+
+       
+    }
+
+/*
     let newsStore = document.getElementById("carouselId");
     newsStore.innerHTML = "";
     let newsStoreStr = "";
-    for(let i = 0; i < 16; ++i)
+
+    for(let i = 0; i < 9; ++i)
     {
-        //if(i % 4 == 0)
-        //{
-        //    newsStore.innerHTML += '<div class="carousel-item col-12 active">\n';
-        //}
-    
-        newsStoreStr += ((i % 4 == 0) ? ('<div class="carousel-item col-12 ' +
+        let text123 = (i % 2) == 0 ? 'sdgiausgdaugsduaosdosudyoagdaisgdasgdigasudtaiosgdustdoiuagsd9augsdoasgdoausdguoagdugawoudgagdauwgdouagsdoasd'
+        : 'sdgiausgdaugsduaosdosudyoagdaisgdasgdigasudtaiosg';
+        newsStoreStr += ((i % 3 == 0) ? ('<div class="carousel-item col-12 ' +
                             ((i == 0) ? 'active">\n' : '">\n'))
                                                 : '') +
-        '<div class="card col-3" style="width: 14rem;">' +
-            '<img class="card-img-top" src="" alt="Card image cap">' +
+        '<div class="card newsCard col-4">' +
+            `<img class="card-img-top" src="./assets/profileImage.png" alt="Card image cap">` +
             '<div class="card-body">' +
-                '<h5 class="card-title">Card title</h5>' +
-                '<p class="card-text"> example </p>' +
-                '<a href="#" class="btn btn-primary">Go somewhere</a>' +
+                `<h5 class="card-title">Test</h5>` +
+                `<p class="card-text"> ${text123} </p>` +
+                `<p> </p>` + 
+                `<a href="#">Mais detalhes</a>` +
             '</div>' +
-        '</div>' + ((i > 0 && (i + 1) % 4 == 0) ? '</div>\n' : '');
+        '</div>' + ((i > 0 && (i + 1) % 3 == 0) ? '</div>\n' : '');
         
-        //if(i > 0 && (i + 1) % 4 == 0)
-        //{
-        //   newsStore.innerHTML += '</div>\n';
-        //}
         
     }
     newsStore.innerHTML = newsStoreStr;
+*/
+
+
+    let newsRequest = new XMLHttpRequest();
+    newsRequest.onload = loadNews;
+    
+    newsRequest.open('GET', `https://gnews.io/api/v4/search?lang=en&q=games AND gaming OR Steam NOT football NOT soccer NOT life&token=${API_KEY}`);
+    newsRequest.send();
 
 }

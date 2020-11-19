@@ -48,6 +48,24 @@ img {
 }
 
 
+.card img
+{
+    width: 90%;
+    height: auto;
+
+}
+
+.newsCard
+{
+    display: inline-block;
+}
+
+.newsCard p
+{
+    display: inline-block;
+    width: 100%;
+}
+
 #navLink01
 {
     vertical-align: middle;
@@ -64,6 +82,8 @@ img {
 
 .news
 {
+    vertical-align: top;
+    margin-top: 2%;
     text-align: center;
     justify-content: center;
     background-color: #23292F;
@@ -79,11 +99,20 @@ img {
 
 .news .card
 {
+    vertical-align: top;
     margin-top: 5%;
-    margin-bottom: 50px;
+    
     display: inline-block;
     background-color: #40444b;
-    min-height: 60%;
+    min-height: 700px !important;
+    margin-top: 0% !important;
+}
+
+.news .card p
+{
+    text-align: left;
+    padding-left: 2% !important;
+    padding-right: 2% !important;
 }
 
 .card

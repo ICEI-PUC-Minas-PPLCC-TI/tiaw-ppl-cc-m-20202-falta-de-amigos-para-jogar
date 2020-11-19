@@ -194,7 +194,7 @@ window.onload = () => {
     let newsRequest = new XMLHttpRequest();
     newsRequest.onload = loadNews;
     
-    newsRequest.open('GET', `https://gnews.io/api/v4/search?lang=en&q=games AND gaming OR Steam NOT football NOT soccer NOT life&token=${API_KEY}`);
+    newsRequest.open('GET', `https://gnews.io/api/v4/search?lang=en&q=(gaming AND (anime OR upcoming OR Valorant OR nintendo OR sony OR crunchyroll OR netflix)) NOT football NOT soccer NOT life&token=${API_KEY}`);
     newsRequest.send();
 
 }

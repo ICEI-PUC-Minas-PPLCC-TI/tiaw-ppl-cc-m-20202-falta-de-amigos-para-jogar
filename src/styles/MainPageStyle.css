@@ -125,6 +125,20 @@ img {
 }
 
 
+.carousel-control-prev
+{
+    width: 5%;
+    left: -0%;
+}
+
+
+.carousel-control-next
+{
+    width: 5%;
+    right: -0%;
+    
+}
+
 .card .btn
 {
     border-color: rgba(0, 0, 0, 0.212);

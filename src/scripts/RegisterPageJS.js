@@ -118,7 +118,7 @@ window.onload = () => {
         localData.users.push(currentUser);
         localStorage.setItem("currentUser", JSON.stringify(currentUser));
         localStorage.setItem("localData", JSON.stringify(localData));
-        window.location.href = "ProfileSettings.html";
+        window.location.href = "MainPage.html";
         return;
 
     }

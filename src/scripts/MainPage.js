@@ -115,7 +115,10 @@ window.onload = () => {
 
     if(currentUserId != -1)
     {
-        document.getElementById("imag01").src = localData.users[currentUserId].profileImg;
+        if(localData.users[currentUserId].profileImg.length)
+            document.getElementById("imag01").src = localData.users[currentUserId].profileImg;
+        else
+            document.getElementById("imag01").src = './assets/profileImage.png';
     }
 
     //================================================================
@@ -194,7 +197,7 @@ window.onload = () => {
     let newsRequest = new XMLHttpRequest();
     newsRequest.onload = loadNews;
     
-    newsRequest.open('GET', `https://gnews.io/api/v4/search?lang=en&q=(gaming AND (anime OR upcoming OR Valorant OR nintendo OR sony OR crunchyroll OR netflix)) NOT football NOT soccer NOT life&token=${API_KEY}`);
+    newsRequest.open('GET', `https://gnews.io/api/v4/search?lang=en&q=(game OR anime OR serie OR film OR movie) AND (netflix OR riot OR crunchyroll OR anime OR sony OR nintendo OR vr OR virtual reality OR geek OR epic games OR steam)&token=${API_KEY}`);
     newsRequest.send();
 
 }

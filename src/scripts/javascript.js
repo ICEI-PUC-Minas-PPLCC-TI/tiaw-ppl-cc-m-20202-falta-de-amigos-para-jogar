@@ -78,7 +78,11 @@ window.onload = () => {
                 currentUserId = i;
                 break;
             }
-            else if(i == localData.users.length - 1) alert("No user is currently logged");
+            else if(i == localData.users.length - 1) 
+            {   
+                alert("No user is currently logged");
+                window.location.href = "src/LoginPage.html";
+            }
         }
     }
 

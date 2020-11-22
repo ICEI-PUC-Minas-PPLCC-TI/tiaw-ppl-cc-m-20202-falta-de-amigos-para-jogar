@@ -156,7 +156,7 @@ window.onload = () => {
             newsStoreStr += ((i % 3 == 0) ? ('<div class="carousel-item col-12 ' +
                                 ((i == 0) ? 'active">\n' : '">\n'))
                                                     : '') +
-            '<div class="card newsCard col-4">' +
+            '<div class="card newsCard col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">' +
                 `<img class="card-img-top" src="${article.image}" alt="Card image cap">` +
                 '<div class="card-body">' +
                     `<h5 class="card-title">${article.title}</h5>` +

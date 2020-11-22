@@ -81,9 +81,12 @@ window.onload = () => {
             else if(i == localData.users.length - 1) 
             {   
                 alert("No user is currently logged");
-                window.location.href = "src/LoginPage.html";
+                window.location.href = "./LoginPage.html";
             }
         }
+    }
+    else{
+        window.location.href = "./LoginPage.html";
     }
 
 

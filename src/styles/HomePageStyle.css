@@ -1,0 +1,105 @@
+.selector-for-some-widget {
+    box-sizing: content-box;
+  }
+body{
+    background-color: rgb(35, 41, 47);
+    color: rgb(255, 255, 255);
+}
+
+.navbar {
+    margin: 0%;
+    padding: 0%;
+    border-color: rgb(4, 214, 241);
+    border-style: solid;
+    border-Width: 0px 0px 2px 0px;
+    margin: 0px 0px 0px 0px;
+    font-size: 1.4em;
+    margin-left: 10px;
+    
+}
+.conteudo1 {
+    margin: 0%;
+    padding: 0%;
+    background-color: rgb(44, 47, 51);
+    padding: 50px;
+    margin-bottom: 10px;
+    border-color: rgb(4, 214, 241);
+    border-style: solid;
+    border-Width: 0px 0px 2px 0px;
+    font-size: 1.4em;
+    background-image: url("../assets/homePageImg.jpeg");
+    min-height: 400px;
+    background-position-y: -100px;
+    vertical-align: middle;
+    background-size: cover;
+}
+
+.button-color {
+    background-color: rgb(35, 41, 47);
+    color: rgb(255, 255, 255);
+    border: rgb(255, 255, 255);
+}
+
+.equipes_img{
+    margin: 0%;
+    padding: 0%;
+    background-color: rgb(35, 41, 47);
+    padding: 20px 100px;
+}
+
+.equipes_txt{
+    margin: 0%;
+    padding: 0%;
+    padding: 50px 20px;
+    font-size: 1.4em;
+}
+
+.conteudo2 {
+    margin: 0%;
+    padding: 0%;
+    margin-bottom: 20px;
+    border-color: rgb(4, 214, 241);
+    border-style: solid;
+    border-Width: 0px 0px 2px 0px;
+}
+
+.conteudo3 {
+    margin: 0%;
+    padding: 0%;
+    display: inline;
+}
+
+.noticias_txt {
+    margin: 0%;
+    padding: 0%;
+    padding: 50px;
+    font-size: 1.4em;
+}
+
+.noticias_cards {
+    margin: 0%;
+    padding: 0%;
+    padding-left: 200px;
+}
+
+.banners {
+    margin: 0%;
+    padding: 0%;
+    padding: 0px; 
+}
+
+footer {
+    margin: 0%;
+    padding: 0%;
+    margin-top: 10px;
+    border-color: rgb(4, 214, 241);
+    border-style: solid;
+    border-Width: 2px 0px 0px 0px;
+    padding: 10px;
+}
+
+.navbar-brand {
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    float: right;
+}

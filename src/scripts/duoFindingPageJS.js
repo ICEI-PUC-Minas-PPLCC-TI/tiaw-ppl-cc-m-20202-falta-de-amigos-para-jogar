@@ -172,15 +172,16 @@ window.onload = () => {
         if(localData.users.length <= 1)
             document.getElementById("usersCarousel01").style.display = 'none';
 
-        let messages = localStorage.getItem("messages");
+        let messagesJSON = localStorage.getItem("messages");
+        let messages;
 
-        if(!messages)
+        if(!messagesJSON)
         {
             document.getElementById("carousel02divId").style.display= "none";
             document.getElementById("carousel02Id").innerHTML = "";
         }
         else 
-            messages = JSON.parse(messages);
+            messages = JSON.parse(messagesJSON);
 
         let usersStoreStr2 = "";
 
@@ -196,7 +197,7 @@ window.onload = () => {
                 continue;
 
             let result = false;
-            for(let j = 0; j < messages.msgs.length; ++j)
+            for(let j = 0; messagesJSON && j < messages.msgs.length; ++j)
             {
                 if((messages.msgs[j].senderUsername == user.userName || messages.msgs[j].receiverUsername == user.userName) &&
                    (messages.msgs[j].senderUsername == currentUser.userName || messages.msgs[j].receiverUsername == currentUser.userName))

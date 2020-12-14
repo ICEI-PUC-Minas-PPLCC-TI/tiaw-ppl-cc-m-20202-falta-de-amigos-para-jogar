@@ -216,7 +216,7 @@ window.onload = () => {
                 "body":`${document.getElementById("messageInputID").value}`
             };
 
-
+            document.getElementById("messageInputID").value = "";
 
             let messagesJSON = localStorage.getItem("messages");
 

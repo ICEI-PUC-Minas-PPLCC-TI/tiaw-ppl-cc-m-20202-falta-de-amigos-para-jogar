@@ -8,7 +8,7 @@
     <title> GamersTeam - Profile Settings </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="styles/MainPageStyle.css"> 
+    <link rel="stylesheet" href="styles/duoFindingPage.css"> 
 
     <script src="https://kit.fontawesome.com/4a35a85f5c.js" crossorigin="anonymous"></script>
 
@@ -32,9 +32,10 @@
                         <nav class="topNav">
 
                             
-                            <a id="navLink01" class="nav-link active" href="ProfileSettings.html"> 
-                                <img src="assets/profileImage.png" id="imag01" alt="Avatar" class="rounded-circle">
-                                <div id="userNameId"></div>
+                            <a id="navLink01" class="nav-link active" 
+                                href="DuoFindingPage.html"> 
+                                <i class="fas fa-chevron-left"></i>
+                                Voltar
                             </a>
 
                             <div class="rightNav">
@@ -67,74 +68,76 @@
     <main class="container-fluid main">
         <div class="row cards">
 
-            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                <div class="card shadow p-3 mb-5" style="width: 95%;">
-                    <div class="card-body">
-                        <a href="DuoFindingPage.html">
-                            <h5 class="card-title"> Procurar Duo </h5>
-                            <p class="card-text"> Encontre outros jogadores que também estão atraz
-                                                de um Duo. Há diversas opções de pesquisa e você também
-                                                pode encontrar pessoas que possuem os mesmos interesses 
-                                                e gostos que você.
-                            </p>
-                        </a>
-                    </div>
-                </div>
+            <div class= "col-12"> 
+                <h1> Encontrar Duo </h1>
             </div>
 
-            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                <div class="card shadow p-3 mb-5" style="width: 95%;">
-                    <div class="card-body">
-                        <a href="#">
-                            <h5 class="card-title"> Procurar Equipe </h5>
-                                <p class="card-text"> Encontre equipes de qualquer tamanho para qualquer jogo.
-                                                        Também há opções de filtragem para que você encontre a 
-                                                        equipe perfeita para você (Não Disponível).
-                                </p>
-                        </a>
-                    </div>
-                </div>
+
+            <div class="form-check col-12">
+                <input class="form-check-input" type="checkbox" value="0" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                  Procurar Pessoas semelhantes a você
+                </label>
             </div>
 
-            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                <div class="card shadow p-3 mb-5" style="width: 95%;">
-                    <div class="card-body">
-                        <a href="#">
-                            <h5 class="card-title"> Criar Equipe </h5>
-                            <p class="card-text"> Caso você não tenha encontrado uma equipe para o jogo que você
-                                                    pretendia jogar, crie a sua própria e espere que outros jogadores
-                                                    entrem nela (Não Disponível).
-                            </p>
-                        </a>
-                    </div>
-                </div>
+
+            <div class="col-12 ageFilter">
+                <br>Filtrar por idade<br>
+                <input type="text" class="form-control ageInput" id="exampleInputAge1" placeholder=""> até
+                <input type="text" class="form-control ageInput" id="exampleInputAge2" placeholder=""> anos
             </div>
+            
+            
         </div>
 
 
         <div class="row news">
 
-            <h5> Últimas notícias </h5>
+            
             <div class="col-12">
+                <h5> Jogadores Encontrados </h5>
 
-                <div id="newsCarousel" class="carousel slide" data-ride="carousel">
+                <div id="usersCarousel01" class="carousel slide" data-ride="carousel">
 
-                    <a class="carousel-control-prev" href="#newsCarousel" role="button" data-slide="prev">
+                    <a class="carousel-control-prev" href="#usersCarousel01" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                       </a>
-                      <a class="carousel-control-next" href="#newsCarousel" role="button" data-slide="next">
+                      <a class="carousel-control-next" href="#usersCarousel01" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                       </a>
 
-                    <div id="carouselId" class="carousel-inner">
-                      
+                    <div id="carousel01Id" class="carousel-inner">
+                        
                     </div>
                     
                   </div>
-                  
+                  <br>
             </div>
+
+            
+            <div class="col-12" id="carousel02divId">
+                <h5> Suas Conversas </h5>
+                <div id="usersCarousel02" class="carousel slide" data-ride="carousel">
+
+                    <a class="carousel-control-prev" href="#usersCarousel2" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                      </a>
+                      <a class="carousel-control-next" href="#usersCarousel02" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                      </a>
+
+                    <div id="carousel02Id" class="carousel-inner">
+                        
+                    </div>
+                    
+                  </div>
+                  <br>
+            </div>
+            
 
         </div>
 
@@ -149,7 +152,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-    <script src="scripts/MainPage.js"> </script>
+    <script src="scripts/duoFindingPageJS.js"> </script>
         
     <footer id="footerId">
 
